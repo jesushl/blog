@@ -30,7 +30,7 @@ class JobExperience(models.Model):
     roll_description = models.TextField()
     technologies = models.ManyToManyField(Technology)
     # Should have a logo for company
-    
+        
 class BookRecomendation(models.Model):
     name=models.CharField(max_length=50)
     article=models.ForeignKey(
