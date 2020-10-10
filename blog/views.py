@@ -24,7 +24,8 @@ def resume(request):
         'adress': _contact_card_info.adress,
         'skype': _contact_card_info.skype,
         'twitter': _contact_card_info.twitter,
-        'linkedin': _contact_card_info.linkedin
+        'linkedin': _contact_card_info.linkedin,
+        'updated': _contact_card_info.updated
     }
     context.update({'contact': _contact_card_info})
     return render(request, "curriculum.html", context)

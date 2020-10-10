@@ -5,16 +5,25 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-       <h5 class="card-title"> <i class="fas fa-user"></i> {{ contact.name  }}</h5>
+       <h5 class="card-title">  {{ contact.name  }} <i class="fas fa-user"></i> </h5>
         <p class="card-text">
-            <h3>  <i class="fas fa-code"></i> {{ contact.title }}</h3>
+            <h3>  {{ contact.title }} <i class="fas fa-code"></i>  </h3>
             <code>
                 <i class="fab fa-connectdevelop"></i>
                 {{contact.nickname}}
             </code>
             <hr>
         </p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <p>
+             <h4><i class="fas fa-inbox"></i>  {{contact.email  }} </h4>
+             <h4><i class="fas fa-phone"></i>  {{ contact.phone }} </h4>
+             <h4><i class="fas fa-map-marker-alt"></i>  {{contact.adress }} </h4>
+             <h4><i class="fab fa-skype"></i>  {{ contact.skype }}</h4>
+             <h4><i class="fab fa-twitter"></i>  {{ contact.twitter}}</h4>
+             <h4><i class="fab fa-linkedin-in"></i>  {{ contact.linkedin }}</h4>
+            
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated {{ contact.updated }}</small></p>
       </div>
     </div>
   </div>

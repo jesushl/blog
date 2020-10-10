@@ -3,7 +3,8 @@ from django.db import models
 class Technology(models.Model):
     name = models.CharField(max_length=100)
     level = models.IntegerField()
-    # Should have a logo too
+    def __str__(self):
+        return "{self.name}  {self.level}/100".format(self=self)
 
 class Article(models.Model):
     title = models.CharField(max_length=100, blank=False, null=True)
@@ -34,21 +35,6 @@ class Hobby(models.Model):
     def __str__(self):
         return "{self.name} : {self.article.abstract}".format(self=self)
 
-class JobExperience(models.Model):
-    company_name = models.CharField(max_length=50)
-    job_title = models.CharField(max_length=100)
-    start_date = models.DateField()
-    termination_date = models.DateField()
-    roll_description = models.TextField()
-    technologies = models.ManyToManyField(Technology)
-    # Should have a logo for company
-    def __str__(self):
-        return (
-                       " {self.company_name} : "
-                        "{self.job_title} : "
-                        "{self.start_date} -> "
-                        "{self.termination_date} "
-        ).format(self=self)
 
 class BookRecomendation(models.Model):
     name=models.CharField(max_length=50)
@@ -118,8 +104,32 @@ class ContactCard(models.Model):
     skype=models.CharField(max_length=20,null=True, blank=True)
     twitter=models.CharField(max_length=10, null=True, blank=True)
     linkedin=models.CharField(max_length=70,null=True, blank=True)
+    
+    updated = models.DateField(auto_now=True, blank=False, null=True)
+
     def __str__(self):
         return (
             "{self.name} : {self.title}"
         ).format(self=self)
 
+class JobExperience(models.Model):
+    company_name = models.CharField(max_length=50)
+    job_title = models.CharField(max_length=100)
+    start_date = models.DateField()
+    termination_date = models.DateField()
+    roll_description = models.TextField()
+    technologies = models.ManyToManyField(Technology)
+    # Should have a logo for company
+    contact_card = models.ForeignKey(
+        ContactCard,
+        on_delete=models.CASCADE,
+        null=True, 
+        blank=True
+    )
+    def __str__(self):
+        return (
+                       " {self.company_name} : "
+                        "{self.job_title} : "
+                        "{self.start_date} -> "
+                        "{self.termination_date} "
+        ).format(self=self)
