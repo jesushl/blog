@@ -3,7 +3,7 @@ from django.contrib import admin
 # Register your models here.
 from .models import Technology, Hobby, BookRecomendation, TechArticle
 from .models import Article, JobExperience, MovieRecomendation
-from .models import Frace, Message
+from .models import Frace, Message, ContactCard
 
 admin.site.register(Technology)
 admin.site.register(Hobby)
@@ -14,3 +14,4 @@ admin.site.register(JobExperience)
 admin.site.register(MovieRecomendation)
 admin.site.register(Frace)
 admin.site.register(Message)
+admin.site.register(ContactCard)

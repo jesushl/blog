@@ -105,3 +105,21 @@ class Message(models.Model):
 
 class Frace(models.Model):
     frace = models.CharField(max_length=200)
+    def __str__(self):
+        return self.frace
+
+class ContactCard(models.Model):
+    name = models.CharField( max_length= 50)
+    title = models.CharField(max_length=50)
+    nickname = models.CharField(max_length=9)
+    email=models.EmailField()
+    phone_number=models.CharField(max_length=20,null=True, blank=True)
+    adress = models.CharField(max_length=100,null=True, blank=True)
+    skype=models.CharField(max_length=20,null=True, blank=True)
+    twitter=models.CharField(max_length=10, null=True, blank=True)
+    linkedin=models.CharField(max_length=70,null=True, blank=True)
+    def __str__(self):
+        return (
+            "{self.name} : {self.title}"
+        ).format(self=self)
+
