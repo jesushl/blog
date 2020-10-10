@@ -11,7 +11,19 @@ class Article(models.Model):
     content = models.TextField(max_length=10000, blank=False, null=True)
     created = models.DateField(auto_created=True, blank=False, null=True)
     updated = models.DateField(auto_now=True, blank=False, null=True)
-
+    ENG_LANG = 'eng'
+    SPA_LANG = 'esp'
+    LANGUAGE_CHOICES = [
+        (ENG_LANG, 'english'),
+        (SPA_LANG, 'español')
+    ]
+    language = models.CharField(
+        max_length=3,
+        choices= LANGUAGE_CHOICES,
+        default=SPA_LANG
+    )
+    def __str__(self):
+        return "{self.title} : {self.abstract}".format(self=self)
 
 class Hobby(models.Model):
     name = models.CharField(max_length=200)
@@ -21,6 +33,8 @@ class Hobby(models.Model):
         null=True, 
         blank=True
     )
+    def __str__(self):
+        return "{self.name} : {self.article.abstract}".format(self=self)
 
 class JobExperience(models.Model):
     company_name = models.CharField(max_length=50)
@@ -30,7 +44,14 @@ class JobExperience(models.Model):
     roll_description = models.TextField()
     technologies = models.ManyToManyField(Technology)
     # Should have a logo for company
-        
+    def __str__(self):
+        return (
+                       " {self.company_name} : "
+                        "{self.job_title} : "
+                        "{self.start_date} -> "
+                        "{self.termination_date} "
+        ).format(self=self)
+
 class BookRecomendation(models.Model):
     name=models.CharField(max_length=50)
     article=models.ForeignKey(
@@ -39,6 +60,8 @@ class BookRecomendation(models.Model):
         blank=True, 
         null=True
     )
+    def __str__(self):
+        return "{self.name}:  {self.article.abstract}".format(self=self)
 
 class MovieRecomendation(models.Model):
     name=models.CharField(max_length=50)
@@ -48,6 +71,8 @@ class MovieRecomendation(models.Model):
         blank=True, 
         null=True
     )
+    def __str__(self):
+        return "{self.name}:  {self.article.abstract}".format(self=self)
 
 class TechArticle(models.Model):
     name=models.CharField(max_length=50)
@@ -57,3 +82,19 @@ class TechArticle(models.Model):
         blank=True, 
         null=True
     )
+    def __str__(self):
+        return "{self.name}:  {self.article.abstract}".format(self=self)
+
+class Message(models.Model):
+    email  = models.EmailField()
+    message = models.TextField()
+    created = models.DateField(
+        auto_created=True, 
+        blank=False, 
+        null=False
+    )
+    def __str__(self):
+        return (
+            "{self.email}  -> {self.message} \n"
+            "{self.created}"
+        ).format(self=self)
