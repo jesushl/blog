@@ -10,18 +10,31 @@
             <h3>  {{ contact.title }} <i class="fas fa-code"></i>  </h3>
             <code>
                 <i class="fab fa-connectdevelop"></i>
-                {{contact.nickname}}
+                {{ contact.nickname }}
             </code>
             <hr>
         </p>
         <p>
-             <h4><i class="fas fa-inbox"></i>  {{contact.email  }} </h4>
-             <h4><i class="fas fa-phone"></i>  {{ contact.phone }} </h4>
-             <h4><i class="fas fa-map-marker-alt"></i>  {{contact.adress }} </h4>
-             <h4><i class="fab fa-skype"></i>  {{ contact.skype }}</h4>
-             <h4><i class="fab fa-twitter"></i>  {{ contact.twitter}}</h4>
-             <h4><i class="fab fa-linkedin-in"></i>  {{ contact.linkedin }}</h4>
-            
+             <h5><i class="fas fa-inbox"></i>  {{ contact.email  }} </h5>
+             <h5><i class="fas fa-phone"></i>  +521 {{ contact.phone_number }} </h5>
+             <h5><i class="fas fa-map-marker-alt"></i>  {{ contact.adress }} </h5>
+            <div class="container" >
+                <div class="row">
+                    <div class="col">
+                        <a href="{{ contact.skype }}"><i class="fab fa-skype"></i>  </a>
+                    </div>
+                    <div class="col">
+                        <a href=" {{ contact.twitter}} ">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href=" {{ contact.linkedin }}">
+                            <i class="fab fa-linkedin-in"></i> 
+                        </a>
+                    </div>
+                </div>
+            </div>
         </p>
         <p class="card-text"><small class="text-muted">Last updated {{ contact.updated }}</small></p>
       </div>

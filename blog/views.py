@@ -15,18 +15,6 @@ def index(request):
 def resume(request):
     context = set_context(where_im_name='is_resume')
     _contact_card_info = ContactCard.objects.get(id=1)
-    _contact = {
-        'name': _contact_card_info.name,
-        'title': _contact_card_info.title,
-        'nickname': _contact_card_info.nickname,
-        'email': _contact_card_info.email,
-        'phone': _contact_card_info.phone_number,
-        'adress': _contact_card_info.adress,
-        'skype': _contact_card_info.skype,
-        'twitter': _contact_card_info.twitter,
-        'linkedin': _contact_card_info.linkedin,
-        'updated': _contact_card_info.updated
-    }
     context.update({'contact': _contact_card_info})
     return render(request, "curriculum.html", context)
 
