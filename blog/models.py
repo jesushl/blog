@@ -27,10 +27,8 @@ class Article(models.Model):
 
 class Hobby(models.Model):
     name = models.CharField(max_length=200)
-    article  = models.ForeignKey(
-        Article, 
-        on_delete=models.CASCADE, 
-        null=True, 
+    article  = models.ManyToManyField(
+        Article,  
         blank=True
     )
     def __str__(self):
@@ -82,6 +80,12 @@ class TechArticle(models.Model):
         blank=True, 
         null=True
     )
+    technology = models.ForeignKey(
+        Technology,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
     def __str__(self):
         return "{self.name}:  {self.article.abstract}".format(self=self)
 
@@ -98,3 +102,6 @@ class Message(models.Model):
             "{self.email}  -> {self.message} \n"
             "{self.created}"
         ).format(self=self)
+
+class Frace(models.Model):
+    frace = models.CharField(max_length=200)

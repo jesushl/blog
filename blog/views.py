@@ -1,6 +1,27 @@
+# django view
 from django.shortcuts import render
 from django.template import Context
+# models
+from .models import Technology, Hobby, BookRecomendation, TechArticle
+from .models import Article, JobExperience, MovieRecomendation
+from .models import Frace, Message
+# tools
+from blog.contextual.random_frace import get_random_frase 
 
 def index(request):
-    context = {'is_blog': True}
+    context = set_context(where_im_name='is_blog')
     return  render(request, 'index.html', context)
+
+def set_context(
+    context=None, 
+    where_im_name:bool=None
+)->dict:
+    _context = {}
+    _context.update({where_im_name: True}) # where im boolean tag
+    _context.update({'frace': get_random_frase()})
+    if not context:
+        context = _context
+    else:
+        context.update(_context)
+    return context
+
