@@ -1,11 +1,10 @@
 circle {
     background: #1E71BB;
-    width: 80px;
+    width: 100px;
     height: 70px;
     border-radius: 50%;
     display: inline-block;
     text-align: center;
-    text-justify: auto;
-    line-height: 40px;
+    line-height: 20px;
     margin-right:20px;
 }
