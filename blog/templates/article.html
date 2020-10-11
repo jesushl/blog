@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">{{ article.title }}</h1>
+    <br>
+    <img src="{{ article.main_image.image.url  }}" alt="{{ article.main_image.name }}">
+    <br>
+    <code style="text-align: right" >{{article.created}}</code>
+    <hr>
+    <p class="lead">{{article.abstract}}</p>
+    <hr class="my-4">
+    <p>{{ article.content }}</p>
+  </div>
+
+
+{% endblock  %}

@@ -35,58 +35,26 @@ class Article(models.Model):
         null=True,
         blank=True
     )
-
-    def __str__(self):
-        return "{self.title} : {self.abstract}".format(self=self)
-
-class Hobby(models.Model):
-    name = models.CharField(max_length=200)
-    article  = models.ManyToManyField(
-        Article,  
+    TECH_ART = 't'
+    HOBBY_ART = 'h'
+    BOOK_ART  = 'b'
+    MOVIE_ART = 'm'
+    MY_PROFILE = 'p'
+    ARTICLE_TYPE_CHOICES = [
+        (TECH_ART, 'Technology'),
+        (HOBBY_ART, 'Hobby' ),
+        (BOOK_ART, 'Book'),
+        (MOVIE_ART, 'Movie'),
+        (MY_PROFILE, 'Profile')
+    ]
+    article_type = models.CharField(
+        max_length=1,
+        choices=ARTICLE_TYPE_CHOICES,
+        null=True,
         blank=True
     )
     def __str__(self):
-        return "{self.name} : {self.article.abstract}".format(self=self)
-
-
-class BookRecomendation(models.Model):
-    name=models.CharField(max_length=50)
-    article=models.ForeignKey(
-        Article,
-        on_delete=models.CASCADE ,
-        blank=True, 
-        null=True
-    )
-    def __str__(self):
-        return "{self.name}:  {self.article.abstract}".format(self=self)
-
-class MovieRecomendation(models.Model):
-    name=models.CharField(max_length=50)
-    article=models.ForeignKey(
-        Article,
-        on_delete=models.CASCADE ,
-        blank=True, 
-        null=True
-    )
-    def __str__(self):
-        return "{self.name}:  {self.article.abstract}".format(self=self)
-
-class TechArticle(models.Model):
-    name=models.CharField(max_length=50)
-    article=models.ForeignKey(
-        Article,
-        on_delete=models.CASCADE ,
-        blank=True, 
-        null=True
-    )
-    technology = models.ForeignKey(
-        Technology,
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True
-    )
-    def __str__(self):
-        return "{self.name}:  {self.article.abstract}".format(self=self)
+        return "{self.title} : {self.abstract}".format(self=self)
 
 class Message(models.Model):
     email  = models.EmailField()
@@ -129,9 +97,6 @@ class ContactCard(models.Model):
         return (
             "{self.name} : {self.title}"
         ).format(self=self)
-
-
-
 
 class JobExperience(models.Model):
     company_name = models.CharField(max_length=50)

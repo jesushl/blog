@@ -2,14 +2,17 @@
 from django.shortcuts import render
 from django.template import Context
 # models
-from .models import Technology, Hobby, BookRecomendation, TechArticle
-from .models import Article, JobExperience, MovieRecomendation
+from .models import Article, JobExperience, Technology
 from .models import Frace, Message, ContactCard, JobExperience, Image
 # tools
 from blog.contextual.random_frace import get_random_frase 
 
 def index(request):
     context = set_context(where_im_name='is_blog')
+    articles = Article.objects.all().order_by('-updated')[:10]
+    context.update({'articles': articles})
+    tech_articles = Article.objects.filter(article_type=Article.TECH_ART).order_by('-updated')[:10]
+    context.update({'tech_articles': tech_articles })
     return  render(request, 'index.html', context)
 
 def resume(request):
@@ -31,6 +34,11 @@ def resume(request):
         )
     return render(request, "curriculum.html", context)
 
+def article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    context = set_context(where_im_name=article.title)
+    context.update({'article': article})
+    return render(request, 'article.html', context)
 
 # Utils
 def set_context(

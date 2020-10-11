@@ -1,0 +1,17 @@
+<div class="row" >
+    {% for tech_article in tech_articles %}
+    <div class="col-2">
+        <div class="card" style="width:  20rem;">
+            <img src="{{ tech_article.main_image.image.url }}" alt="{{ tech_article.article.main_image.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{  tech_article.title }} </h5>
+                <p class="card-text">{{ tech_article.abstract }}</p>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-primary" href="{% url 'article' article_id=tech_article.id %}" class="card-link">Leer</a>
+              </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
