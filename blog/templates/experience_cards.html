@@ -11,7 +11,7 @@
             <div class="card  md-6 text-right">
         {% endif %}
             <div class="card-body">
-                <h3 class="card-title">{{ experience_item.experience.company_name }}</h3>
+               <h3 class="card-title">  <img src="{{ experience_item.image.image.url }}" alt="" width="40" height="40" >       {{ experience_item.experience.company_name }}</h3>
                 {%if experience.termination_date %}
                     from: {{ experience_item.experience.start_date}}  -> to:{{experience_item.experience.termination_date}}
                 {% else %}

@@ -6,6 +6,12 @@ class Technology(models.Model):
     def __str__(self):
         return "{self.name}  {self.level}/100".format(self=self)
 
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'gallery', default ='gallery/static/images/no-img.jpg')
+    name = models.CharField(max_length=200)
+    def __str__(self):
+        return '{}'.format(self.name)
+
 class Article(models.Model):
     title = models.CharField(max_length=100, blank=False, null=True)
     abstract = models.CharField(max_length=128, blank=False, null=True)
@@ -23,6 +29,13 @@ class Article(models.Model):
         choices= LANGUAGE_CHOICES,
         default=SPA_LANG
     )
+    main_image = models.ForeignKey(
+        Image, 
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return "{self.title} : {self.abstract}".format(self=self)
 
@@ -104,13 +117,21 @@ class ContactCard(models.Model):
     skype=models.CharField(max_length=20,null=True, blank=True)
     twitter=models.CharField(max_length=10, null=True, blank=True)
     linkedin=models.CharField(max_length=70,null=True, blank=True)
-    
+    image = models.ForeignKey(
+        Image,
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE
+    )
     updated = models.DateField(auto_now=True, blank=False, null=True)
 
     def __str__(self):
         return (
             "{self.name} : {self.title}"
         ).format(self=self)
+
+
+
 
 class JobExperience(models.Model):
     company_name = models.CharField(max_length=50)
@@ -126,6 +147,12 @@ class JobExperience(models.Model):
         null=True, 
         blank=True
     )
+    image = models.ForeignKey(
+        Image, 
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE
+    )
     def __str__(self):
         return (
                        " {self.company_name} : "
@@ -133,8 +160,3 @@ class JobExperience(models.Model):
                         "{self.start_date} -> "
                         "{self.termination_date} "
         ).format(self=self)
-
-
-class Image(models.Model):
-   image = models.ImageField(upload_to = 'gallery', default 'gallery/static/images/no-img.jpg')
-   name = models.CharField(max_length=200)

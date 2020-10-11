@@ -4,7 +4,7 @@ from django.template import Context
 # models
 from .models import Technology, Hobby, BookRecomendation, TechArticle
 from .models import Article, JobExperience, MovieRecomendation
-from .models import Frace, Message, ContactCard, JobExperience
+from .models import Frace, Message, ContactCard, JobExperience, Image
 # tools
 from blog.contextual.random_frace import get_random_frase 
 
@@ -16,6 +16,8 @@ def resume(request):
     context = set_context(where_im_name='is_resume')
     _contact_card_info = ContactCard.objects.get(id=1)
     context.update({'contact': _contact_card_info})
+    contact_image = Image.objects.get(id=_contact_card_info.image.id)
+    context.update({'contact_image': contact_image})
     experiences = JobExperience.objects.filter(
         contact_card=_contact_card_info
         ).order_by(
@@ -25,7 +27,7 @@ def resume(request):
     for experience in experiences:
         technologies = Technology.objects.filter(jobexperience=experience)
         context['experience_items'].append(
-                {'experience': experience, 'technologies': technologies }
+                {'experience': experience, 'technologies': technologies, 'image': experience.image }
         )
     return render(request, "curriculum.html", context)
 
