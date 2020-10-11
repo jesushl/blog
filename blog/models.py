@@ -133,3 +133,8 @@ class JobExperience(models.Model):
                         "{self.start_date} -> "
                         "{self.termination_date} "
         ).format(self=self)
+
+
+class Image(models.Model):
+   image = models.ImageField(upload_to = 'gallery', default 'gallery/static/images/no-img.jpg')
+   name = models.CharField(max_length=200)
