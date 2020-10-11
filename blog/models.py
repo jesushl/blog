@@ -116,7 +116,7 @@ class JobExperience(models.Model):
     company_name = models.CharField(max_length=50)
     job_title = models.CharField(max_length=100)
     start_date = models.DateField()
-    termination_date = models.DateField()
+    termination_date = models.DateField(blank=True, null=True)
     roll_description = models.TextField()
     technologies = models.ManyToManyField(Technology)
     # Should have a logo for company
