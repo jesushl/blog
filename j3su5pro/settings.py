@@ -25,9 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '1$j2l#m&a59eb9c$+)fujtfbr+qbjb#ggn!$03u6($npvx6xua'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "ec2-3-86-157-127.compute-1.amazonaws.com",
+    "127.0.0.1"
+]
 
 
 # Application definition
