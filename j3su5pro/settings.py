@@ -29,7 +29,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     "ec2-3-86-157-127.compute-1.amazonaws.com",
-    "127.0.0.1"
+    "127.0.0.1",
+    "3.86.157.127"
 ]
 
 
@@ -125,5 +126,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
