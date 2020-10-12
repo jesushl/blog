@@ -8,11 +8,13 @@ from .models import Frace, Message, ContactCard, JobExperience, Image
 from blog.contextual.random_frace import get_random_frase 
 
 def index(request):
-    context = set_context(where_im_name='is_blog')
+    context = set_context(where_im_name='is_index')
     articles = Article.objects.all().order_by('-updated')[:10]
     context.update({'articles': articles})
-    tech_articles = Article.objects.filter(article_type=Article.TECH_ART).order_by('-updated')[:10]
+    tech_articles = Article.objects.filter(article_type=Article.TECH_ART).order_by('-updated')[:6]
     context.update({'tech_articles': tech_articles })
+    hobby_articles = Article.objects.filter(article_type=Article.HOBBY_ART).order_by("-updated")[:6]
+    context.update({ 'hobby_articles':  hobby_articles })
     return  render(request, 'index.html', context)
 
 def resume(request):
@@ -35,10 +37,35 @@ def resume(request):
     return render(request, "curriculum.html", context)
 
 def article(request, article_id):
+    context = set_context(where_im_name='is_blog')
     article = Article.objects.get(id=article_id)
-    context = set_context(where_im_name=article.title)
     context.update({'article': article})
     return render(request, 'article.html', context)
+
+def blog(request, page=1):
+    if page >= 1 :
+        context = set_context(where_im_name='is_blog')
+        articles_by_page = 10
+        max_articles = Article.objects.all().count()
+        button_article = (page - 1) * articles_by_page
+        last_article = button_article + articles_by_page 
+        if last_article > max_articles:
+            last_article = max_articles - button_article
+        if page > 1:
+            context.update({'previous_page' : page - 1})
+        else:
+            context.update({'previous_page': False})
+        # is a valid next page ? 
+        next_page = page + 1 
+        if next_page <= round(max_articles / articles_by_page):
+            context.update({'next_page': next_page})
+        else:
+            context.update({'next_page': False})
+        context.update({'current_page': page})
+        articles = Article.objects.all().order_by('-updated')[button_article : last_article]
+        context.update({'articles': articles})
+        return render(request, 'blog.html', context)
+    return render(request, 'index.html')
 
 # Utils
 def set_context(
