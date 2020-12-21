@@ -1,4 +1,7 @@
 from django.db import models
+# ckeditor
+from ckeditor_uploader.fields import  RichTextUploadingField
+
 
 class Technology(models.Model):
     name = models.CharField(max_length=100)
@@ -15,7 +18,7 @@ class Image(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=100, blank=False, null=True)
     abstract = models.CharField(max_length=128, blank=False, null=True)
-    content = models.TextField(max_length=10000, blank=False, null=True)
+    content = RichTextUploadingField(max_length=10000, blank=False, null=True)
     created = models.DateField(auto_created=True, blank=False, null=True)
     updated = models.DateField(auto_now=True, blank=False, null=True)
     ENG_LANG = 'eng'

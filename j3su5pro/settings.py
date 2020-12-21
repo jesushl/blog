@@ -28,7 +28,7 @@ SECRET_KEY = '1$j2l#m&a59eb9c$+)fujtfbr+qbjb#ggn!$03u6($npvx6xua'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "ec2-3-86-157-127.compute-1.amazonaws.com",
+    "ec2-34-229-167-112.compute-1.amazonaws.com",
     "127.0.0.1",
     "3.86.157.127",
     "j3su5pro.com",
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps,
     'blog.apps.BlogConfig',
+    # CKEDITOR
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -128,6 +130,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/j3su5/STATIC/'
+STATIC_ROOT = '/tmp/www/j3su5pro/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = '/static/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 500,
+        'width': '75%',
+    },
+}

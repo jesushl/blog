@@ -73,6 +73,8 @@ def me(request):
     context.update({'article' : article})
     return render(request, 'article.html', context)
 
+def contact(request):
+    pass
 
 # Utils
 def set_context(
