@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "ec2-34-229-167-112.compute-1.amazonaws.com",
     "127.0.0.1",
-    "3.86.157.127",
+    "34.229.167.112",
     "j3su5pro.com",
     "jesusherreraledon.com.mx"
 ]
