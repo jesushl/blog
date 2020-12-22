@@ -28,7 +28,7 @@ SECRET_KEY = '1$j2l#m&a59eb9c$+)fujtfbr+qbjb#ggn!$03u6($npvx6xua'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "http://ec2-34-229-167-112.compute-1.amazonaws.com/8000",
+    "http://ec2-34-229-167-112.compute-1.amazonaws.com",
     "127.0.0.1",
     "34.229.167.112",
     "j3su5pro.com",
