@@ -28,7 +28,7 @@ SECRET_KEY = '1$j2l#m&a59eb9c$+)fujtfbr+qbjb#ggn!$03u6($npvx6xua'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "j3su5pro.herokuapp.com",
+    "secret-river-26786.herokuapp.com",
     "34.229.167.112",
     "127.0.0.1",
     "j3su5pro.com",
