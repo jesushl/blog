@@ -28,7 +28,7 @@ SECRET_KEY = '1$j2l#m&a59eb9c$+)fujtfbr+qbjb#ggn!$03u6($npvx6xua'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "ec2-34-229-167-112.compute-1.amazonaws.com",
+    "j3su5pro.herokuapp.com",
     "34.229.167.112",
     "127.0.0.1",
     "j3su5pro.com",
