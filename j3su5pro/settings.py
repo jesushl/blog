@@ -9,10 +9,13 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
 from pathlib import Path
 #Python
 import os
+# Heroku
+import django_heroku
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,7 +136,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/tmp/www/j3su5pro/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-<<<<<<< HEAD
 CKEDITOR_UPLOAD_PATH = '/static/'
 
 CKEDITOR_CONFIGS = {
@@ -143,5 +145,3 @@ CKEDITOR_CONFIGS = {
         'width': '75%',
     },
 }
-=======
->>>>>>> 248967ebdb7cad7f10bb37c9bc9e1d895bfc39e9
