@@ -14,13 +14,16 @@ from pathlib import Path
 import os
 # Heroku
 import django_heroku
+# Heroku database
+import dj_database_url
 # Activate Django-Heroku.
 # django_heroku.settings(locals())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+# Heroku variables
+ON_HEROKU = os.environ.get('ON_HEROKU')
+HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -87,7 +90,7 @@ WSGI_APPLICATION = 'j3su5pro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,7 +98,11 @@ DATABASES = {
         # 'CONN_MAX_AGE': 500
     }
 }
-
+"""
+if ON_HEROKU:
+    DATABASE_URL = 'postgresql://postgresql-transparent-16000'
+else:
+    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -146,3 +153,6 @@ CKEDITOR_CONFIGS = {
         'width': '75%',
     },
 }
+
+DATABASES={}
+DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
