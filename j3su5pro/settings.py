@@ -133,6 +133,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/tmp/www/j3su5pro/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+<<<<<<< HEAD
 CKEDITOR_UPLOAD_PATH = '/static/'
 
 CKEDITOR_CONFIGS = {
@@ -142,3 +143,5 @@ CKEDITOR_CONFIGS = {
         'width': '75%',
     },
 }
+=======
+>>>>>>> 248967ebdb7cad7f10bb37c9bc9e1d895bfc39e9
