@@ -101,6 +101,7 @@ class ContactCard(models.Model):
             "{self.name} : {self.title}"
         ).format(self=self)
 
+
 class JobExperience(models.Model):
     company_name = models.CharField(max_length=50)
     job_title = models.CharField(max_length=100)
@@ -108,19 +109,14 @@ class JobExperience(models.Model):
     termination_date = models.DateField(blank=True, null=True)
     roll_description = models.TextField()
     technologies = models.ManyToManyField(Technology)
-    # Should have a logo for company
-    contact_card = models.ForeignKey(
-        ContactCard,
-        on_delete=models.CASCADE,
-        null=True, 
-        blank=True
-    )
+
     image = models.ForeignKey(
-        Image, 
+        Image,
         blank=True,
         null=True,
         on_delete=models.CASCADE
     )
+    
     def __str__(self):
         return (
                        " {self.company_name} : "

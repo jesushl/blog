@@ -5,7 +5,7 @@ from django.template import Context
 from .models import Article, JobExperience, Technology
 from .models import Frace, Message, ContactCard, JobExperience, Image
 # tools
-from blog.contextual.random_frace import get_random_frase 
+from blog.contextual.random_frace import get_random_frase
 
 
 def index(request):
@@ -38,9 +38,13 @@ def resume(request):
     for experience in experiences:
         technologies = Technology.objects.filter(jobexperience=experience)
         context['experience_items'].append(
-                {'experience': experience, 'technologies': technologies, 'image': experience.image }
+                {
+                    'experience': experience, 'technologies': technologies, 
+                    'image':  experience.image
+                }
         )
     return render(request, "curriculum.html", context)
+
 
 def article(request, article_id):
     context = set_context(where_im_name='is_blog')
@@ -48,52 +52,58 @@ def article(request, article_id):
     context.update({'article': article})
     return render(request, 'article.html', context)
 
+
 def blog(request, page=1):
-    if page >= 1 :
+    if page >= 1:
         context = set_context(where_im_name='is_blog')
         articles_by_page = 10
         max_articles = Article.objects.all().count()
         button_article = (page - 1) * articles_by_page
-        last_article = button_article + articles_by_page 
+        last_article = button_article + articles_by_page
         if last_article > max_articles:
             last_article = max_articles - button_article
         if page > 1:
-            context.update({'previous_page' : page - 1})
+            context.update({'previous_page':  page - 1})
         else:
             context.update({'previous_page': False})
-        # is a valid next page ? 
-        next_page = page + 1 
+        # is a valid next page ?
+        next_page = page + 1
         if next_page <= round(max_articles / articles_by_page):
             context.update({'next_page': next_page})
         else:
             context.update({'next_page': False})
         context.update({'current_page': page})
-        articles = Article.objects.all().order_by('-updated')[button_article : last_article]
+        articles = Article.objects.all().order_by('-updated')[
+            button_article: last_article
+        ]
         context.update({'articles': articles})
         return render(request, 'blog.html', context)
     return render(request, 'index.html')
 
+
 def me(request):
     context = set_context(where_im_name='is_me')
-    article = Article.objects.filter(article_type=Article.MY_PROFILE).order_by('-updated')[0]
-    context.update({'article' : article})
+    article = Article.objects.filter(
+        article_type=Article.MY_PROFILE
+    ).order_by('-updated')[0]
+    context.update({'article':  article})
     return render(request, 'article.html', context)
+
 
 def contact(request):
     pass
 
+
 # Utils
 def set_context(
-    context=None, 
-    where_im_name:bool=None
-)->dict:
+    context=None,
+    where_im_name: bool = None
+) -> dict:
     _context = {}
-    _context.update({where_im_name: True}) # where im boolean tag
+    _context.update({where_im_name: True})   # where im boolean tag
     _context.update({'frace': get_random_frase()})
     if not context:
         context = _context
     else:
         context.update(_context)
     return context
-
-
