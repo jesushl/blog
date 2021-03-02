@@ -1,19 +1,26 @@
 from django.db import models
 # ckeditor
-from ckeditor_uploader.fields import  RichTextUploadingField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Technology(models.Model):
     name = models.CharField(max_length=100)
     level = models.IntegerField()
+
     def __str__(self):
         return "{self.name}  {self.level}/100".format(self=self)
 
+
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'gallery', default ='gallery/static/images/no-img.jpg')
+    image = models.ImageField(
+        upload_to='gallery',
+        default='gallery/static/images/no-img.jpg'
+    )
     name = models.CharField(max_length=200)
+  
     def __str__(self):
         return '{}'.format(self.name)
+
 
 class Article(models.Model):
     title = models.CharField(max_length=100, blank=False, null=True)
@@ -29,7 +36,7 @@ class Article(models.Model):
     ]
     language = models.CharField(
         max_length=3,
-        choices= LANGUAGE_CHOICES,
+        choices=LANGUAGE_CHOICES,
         default=SPA_LANG
     )
     main_image = models.ForeignKey(
@@ -40,12 +47,12 @@ class Article(models.Model):
     )
     TECH_ART = 't'
     HOBBY_ART = 'h'
-    BOOK_ART  = 'b'
+    BOOK_ART = 'b'
     MOVIE_ART = 'm'
     MY_PROFILE = 'p'
     ARTICLE_TYPE_CHOICES = [
         (TECH_ART, 'Technology'),
-        (HOBBY_ART, 'Hobby' ),
+        (HOBBY_ART, 'Hobby'),
         (BOOK_ART, 'Book'),
         (MOVIE_ART, 'Movie'),
         (MY_PROFILE, 'Profile')
@@ -56,38 +63,44 @@ class Article(models.Model):
         null=True,
         blank=True
     )
+   
     def __str__(self):
         return "{self.title} : {self.abstract}".format(self=self)
 
+
 class Message(models.Model):
-    email  = models.EmailField()
+    email = models.EmailField()
     message = models.TextField()
     created = models.DateField(
-        auto_created=True, 
-        blank=False, 
+        auto_created=True,
+        blank=False,
         null=False
     )
+
     def __str__(self):
         return (
             "{self.email}  -> {self.message} \n"
             "{self.created}"
         ).format(self=self)
 
+
 class Frace(models.Model):
     frace = models.CharField(max_length=200)
+
     def __str__(self):
         return self.frace
 
+
 class ContactCard(models.Model):
-    name = models.CharField( max_length= 50)
+    name = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     nickname = models.CharField(max_length=9)
-    email=models.EmailField()
-    phone_number=models.CharField(max_length=20,null=True, blank=True)
-    adress = models.CharField(max_length=100,null=True, blank=True)
-    skype=models.CharField(max_length=20,null=True, blank=True)
-    twitter=models.CharField(max_length=10, null=True, blank=True)
-    linkedin=models.CharField(max_length=70,null=True, blank=True)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=20, null=True, blank=True)
+    adress = models.CharField(max_length=100, null=True, blank=True)
+    skype = models.CharField(max_length=20, null=True, blank=True)
+    twitter = models.CharField(max_length=10, null=True, blank=True)
+    linkedin = models.CharField(max_length=70, null=True, blank=True)
     image = models.ForeignKey(
         Image,
         null=True,
@@ -116,11 +129,11 @@ class JobExperience(models.Model):
         null=True,
         on_delete=models.CASCADE
     )
-    
+
     def __str__(self):
         return (
-                       " {self.company_name} : "
-                        "{self.job_title} : "
-                        "{self.start_date} -> "
-                        "{self.termination_date} "
+                    " {self.company_name} : "
+                    "{self.job_title} : "
+                    "{self.start_date} -> "
+                    "{self.termination_date} "
         ).format(self=self)
