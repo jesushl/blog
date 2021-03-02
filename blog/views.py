@@ -29,8 +29,7 @@ def resume(request):
     context.update({'contact': _contact_card_info})
     contact_image = Image.objects.get(id=_contact_card_info.image.id)
     context.update({'contact_image': contact_image})
-    experiences = JobExperience.objects.filter(
-        contact_card=_contact_card_info
+    experiences = JobExperience.objects.all(
         ).order_by(
             '-start_date'
         )
