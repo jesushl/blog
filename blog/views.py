@@ -7,15 +7,21 @@ from .models import Frace, Message, ContactCard, JobExperience, Image
 # tools
 from blog.contextual.random_frace import get_random_frase 
 
+
 def index(request):
     context = set_context(where_im_name='is_index')
     articles = Article.objects.all().order_by('-updated')[:10]
     context.update({'articles': articles})
-    tech_articles = Article.objects.filter(article_type=Article.TECH_ART).order_by('-updated')[:6]
-    context.update({'tech_articles': tech_articles })
-    hobby_articles = Article.objects.filter(article_type=Article.HOBBY_ART).order_by("-updated")[:6]
-    context.update({ 'hobby_articles':  hobby_articles })
-    return  render(request, 'index.html', context)
+    tech_articles = Article.objects.filter(
+        article_type=Article.TECH_ART
+    ).order_by('-updated')[:6]
+    context.update({'tech_articles':  tech_articles})
+    hobby_articles = Article.objects.filter(
+        article_type=Article.HOBBY_ART
+    ).order_by("-updated")[:6]
+    context.update({'hobby_articles':  hobby_articles})
+    return render(request, 'index.html', context)
+
 
 def resume(request):
     context = set_context(where_im_name='is_resume')
