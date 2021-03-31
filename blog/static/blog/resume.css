@@ -29,6 +29,11 @@
         margin-right: auto;
     }
     
+    .article_jumbotron hr {
+        background-color: aliceblue;
+        border-color: aliceblue;
+    }
+    
     .footer {
         color: aliceblue;
     }

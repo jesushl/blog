@@ -92,14 +92,19 @@ def me(request):
 
 
 def contact(request):
+    context = set_context()
     if request.method == 'POST':
         form = ContactForm(request.POST)
+        import pdb; pdb.set_trace()
         if form.is_valid():
-            return None  # Tanks Message
+           
+            return render(request, 'contact_form.html', context=context)  # Tanks Message
         else:
-            context = set_context()
-            context.update({'form': form})
-            return render(request, 'contact_form.html', context=context)
+            render(request, 'contact_form.html', context=context)
+    else:
+        form = ContactForm()
+        context.update({'form': form})
+        return render(request, 'contact_form.html', context=context)
 
 
 # Utils

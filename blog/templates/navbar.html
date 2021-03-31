@@ -3,12 +3,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-link  {% if is_blog %} active {% endif %}" href="{% url 'blog' page=1 %}"><i class="fas fa-dragon"></i> Blog</a>
-          <a class="nav-link {% if is_me %} active {% endif %} " href="{% url 'me'  %}"><i class="fas fa-user"></i> Me</a>
-          <a class="nav-link {% if is_contact %} active {% endif %}" href="#"> <i class="fas fa-file-signature"></i> Contact</a>
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ frace  }}</a>
+            <a class="nav-link {% if is_me %} active {% endif %} " href="{% url 'me'  %}"><i class="fas fa-user"></i> Me</a>
+            <a class="nav-link {% if is_contact %} active {% endif %}" href="{% url 'contact' %}"> <i class="fas fa-file-signature"></i> Contact</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ frace  }}</a>
         </div>
-      </div>
-  </nav>
+    </div>
+</nav>
