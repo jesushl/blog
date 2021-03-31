@@ -1,5 +1,5 @@
 # django view
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import Context
 # models
 from .models import Article, JobExperience, Technology
@@ -95,12 +95,11 @@ def contact(request):
     context = set_context()
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        import pdb; pdb.set_trace()
         if form.is_valid():
-           
-            return render(request, 'contact_form.html', context=context)  # Tanks Message
+            return redirect('index')
         else:
-            render(request, 'contact_form.html', context=context)
+            context.update({'form': form})
+            return render(request, 'contact_form.html', context=context)
     else:
         form = ContactForm()
         context.update({'form': form})
