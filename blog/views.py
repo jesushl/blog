@@ -6,6 +6,8 @@ from .models import Article, JobExperience, Technology
 from .models import Frace, Message, ContactCard, JobExperience, Image
 # tools
 from blog.contextual.random_frace import get_random_frase
+# Form
+from blog.forms import ContactForm
 
 
 def index(request):
@@ -90,7 +92,14 @@ def me(request):
 
 
 def contact(request):
-    pass
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            return None  # Tanks Message
+        else:
+            context = set_context()
+            context.update({'form': form})
+            return render(request, 'contact_form.html', context=context)
 
 
 # Utils
