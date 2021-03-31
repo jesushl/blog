@@ -1,18 +1,38 @@
-circle {
-    background: #1E71BB;
-    width: 100px;
-    height: 70px;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-    line-height: 20px;
-    margin-right: 20px;
-}
-
-.footer {
-    color: aliceblue;
-}
-
-.footer a:link {
-    color: #e25947;
-}
+    circle {
+        background: #1E71BB;
+        width: 100px;
+        height: 70px;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+        margin-right: 20px;
+    }
+    
+    .article_jumbotron {
+        background-color: aliceblue;
+        border-color: rgb(37, 114, 150);
+        border-radius: 15%;
+    }
+    
+    .article_abstract {
+        border-color: #1E71BB;
+        color: rgb(0, 2, 119);
+    }
+    
+    .article_jumbotron img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 20rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .footer {
+        color: aliceblue;
+    }
+    
+    .footer a:link {
+        color: #e25947;
+    }

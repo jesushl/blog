@@ -1,28 +1,24 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
-{% for article in articles %}
-<div class="jumbotron">
+{% extends 'base.html' %} {% block content %} {% for article in articles %}
+<div class="jumbotron article_jumbotron">
     <h1 class="display-4">{{ article.title }}</h1>
     <p class="lead">{{ article.abstract }}</p>
     <hr class="my-4">
     <p><code>{{ article.article_type }}</code></p>
     <a class="btn btn-primary btn-lg" href="{% url  'article' article_id=article.id %}" role="button">Leer</a>
-  </div>
+</div>
 {% endfor %}
 <br>
 <nav aria-label="Page navigation">
     <ul class="pagination">
-        {% if  previous_page %}
-            <li class="page-item"><a class="page-link" href="{% url 'blog'  page=previous_page  %}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href='{% url "blog" page=previous_page  %}'>{{ previous_page }}</a></li>
+        {% if previous_page %}
+        <li class="page-item"><a class="page-link" href="{% url 'blog'  page=previous_page  %}">Previous</a></li>
+        <li class="page-item"><a class="page-link" href='{% url "blog" page=previous_page  %}'>{{ previous_page }}</a></li>
         {% endif %}
         <li class="page-item"><a class="page-link" href="#">{{ current_page }}</a></li>
-      {% if   next_page   %}
-      <li class="page-item"><a class="page-link" href='{% url "blog" page=next_page  %}'>{{ next_page  }} </a></li>
-      <li class="page-item"><a class="page-link" href='{% url "blog" page=next_page  %}'>Next</a></li>
-      {% endif %}
+        {% if next_page %}
+        <li class="page-item"><a class="page-link" href='{% url "blog" page=next_page  %}'>{{ next_page  }} </a></li>
+        <li class="page-item"><a class="page-link" href='{% url "blog" page=next_page  %}'>Next</a></li>
+        {% endif %}
     </ul>
-  </nav>
-  {% endblock %}
+</nav>
+{% endblock %}
