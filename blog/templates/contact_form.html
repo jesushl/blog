@@ -1,7 +1,9 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% for field in form%} {% if field.errors %}
 <div class="alert alert-danger">
-    {% for field in form%} {{ field.errors }} {% endfor %}
+    {{ field.errors }}
 </div>
+{%endif%} {% endfor %}
+
 
 <form action="{% url 'contact' %}" method="post">
     {% csrf_token %}
