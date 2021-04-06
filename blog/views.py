@@ -8,6 +8,8 @@ from .models import Frace, Message, ContactCard, JobExperience, Image
 from blog.contextual.random_frace import get_random_frase
 # Form
 from blog.forms import ContactForm
+# Mail
+from django.core.mail import send_mail
 
 
 def index(request):
@@ -40,7 +42,7 @@ def resume(request):
         technologies = Technology.objects.filter(jobexperience=experience)
         context['experience_items'].append(
                 {
-                    'experience': experience, 'technologies': technologies, 
+                    'experience': experience, 'technologies': technologies,
                     'image':  experience.image
                 }
         )
@@ -96,6 +98,16 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
+            try:
+                send_mail(
+                    "test",
+                    'Test message',
+                    'test@example.com',
+                    ['j3su5.pro@gmail.com'],
+                    fail_silently=False
+                )
+            except ConnectionRefusedError:
+                pass
             return redirect('index')
         else:
             context.update({'form': form})
