@@ -17,7 +17,7 @@ class Image(models.Model):
         default='gallery/static/images/no-img.jpg'
     )
     name = models.CharField(max_length=200)
-  
+
     def __str__(self):
         return '{}'.format(self.name)
 
