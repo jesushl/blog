@@ -38,7 +38,8 @@ ALLOWED_HOSTS = [
     "34.229.167.112",
     "127.0.0.1",
     "j3su5pro.com",
-    "jesusherreraledon.com.mx"
+    "jesusherreraledon.com.mx",
+    "j3su5.pro"
 ]
 
 
