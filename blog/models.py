@@ -98,8 +98,8 @@ class ContactCard(models.Model):
     email = models.EmailField()
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     adress = models.CharField(max_length=100, null=True, blank=True)
-    skype = models.CharField(max_length=20, null=True, blank=True)
-    twitter = models.CharField(max_length=30, null=True, blank=True)
+    skype = models.CharField(max_length=100, null=True, blank=True)
+    twitter = models.CharField(max_length=100, null=True, blank=True)
     linkedin = models.CharField(max_length=70, null=True, blank=True)
     image = models.ForeignKey(
         Image,
