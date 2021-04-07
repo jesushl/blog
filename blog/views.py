@@ -88,8 +88,10 @@ def me(request):
     context = set_context(where_im_name='is_me')
     article = Article.objects.filter(
         article_type=Article.MY_PROFILE
-    ).order_by('-updated')[0]
-    context.update({'article':  article})
+    ).order_by('-updated')
+    if article:
+        article = article[0]
+        context.update({'article':  article})
     return render(request, 'article.html', context)
 
 
