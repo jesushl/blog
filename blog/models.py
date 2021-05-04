@@ -40,7 +40,7 @@ class Article(models.Model):
         default=SPA_LANG
     )
     main_image = models.ForeignKey(
-        Image, 
+        Image,
         on_delete=models.CASCADE,
         null=True,
         blank=True
@@ -63,16 +63,21 @@ class Article(models.Model):
         null=True,
         blank=True
     )
-   
+
     def __str__(self):
         return "{self.title} : {self.abstract}".format(self=self)
 
 
 class Message(models.Model):
+    name = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True
+    )
     email = models.EmailField()
     message = models.TextField()
     created = models.DateField(
-        auto_created=True,
+        auto_now_add=True,
         blank=False,
         null=False
     )

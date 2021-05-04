@@ -100,6 +100,8 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
+            form.save()
+
             try:
                 send_mail(
                     "test",
@@ -108,6 +110,7 @@ def contact(request):
                     ['j3su5.pro@gmail.com'],
                     fail_silently=False
                 )
+
             except ConnectionRefusedError:
                 pass
             return redirect('index')
