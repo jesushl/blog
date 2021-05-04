@@ -2,7 +2,7 @@
 <div class="row">
     {% for experience_item in experience_items %}
     <div class="col-12">
-      
+
         {% if experience_item.experience.id|divisibleby:2  %}
         <!--Card to right-->
             <div class="card" >
@@ -11,15 +11,17 @@
             <div class="card  md-6 text-right">
         {% endif %}
             <div class="card-body">
-               <h3 class="card-title">  <img src="{{ experience_item.image.image.url }}" alt="" width="40" height="40" >       {{ experience_item.experience.company_name }}</h3>
-                {%if experience.termination_date %}
-                    from: {{ experience_item.experience.start_date}}  -> to:{{experience_item.experience.termination_date}}
+               <h3 class="card-title">  <img src="{{ experience_item.image.image.url }}" alt="" width="40" height="40" >
+                 {{ experience_item.experience.company_name }}
+               </h3>
+                {%if not experience_item.experience.termination_date %}
+                  from: {{ experience_item.experience.start_date}}          <b>CURRENT</b> 
                 {% else %}
-                    from: {{ experience_item.experience.start_date}}       CURRENT
+                    from: {{ experience_item.experience.start_date}}  -> to:{{experience_item.experience.termination_date}}
                 {% endif %}
                 <p class="card-text">
-                <h4>    {{ experience_item.experience.job_title }} </h4>
-                {{ experience_item.experience.roll_description }}
+                  <h4>    {{ experience_item.experience.job_title }} </h4>
+                  {{ experience_item.experience.roll_description }}
                 </p>
                <br>
                <hr>
@@ -27,10 +29,10 @@
                <div class="row" >
                 {% for technology in experience_item.technologies%}
                 <div class="col-2 text-center" >
-                   
+
                         {{ technology.name}}
-                   
-                      
+
+
                 </div>
                 {%endfor%}
             </div>
@@ -39,4 +41,3 @@
     </div>
     {% endfor %}
     </div>
-   
