@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     # local apps
     "blog.apps.BlogConfig",
-    "authentication.apps.AuthenticationConfig"
+    "authentication.apps.AuthenticationConfig",
     # CKEDITOR
     "ckeditor",
 ]
