@@ -1,4 +1,5 @@
 from django.db import models
+
 # ckeditor
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -13,13 +14,12 @@ class Technology(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(
-        upload_to='gallery',
-        default='gallery/static/images/no-img.jpg'
+        upload_to="gallery", default="gallery/static/images/no-img.jpg"
     )
     name = models.CharField(max_length=200)
 
     def __str__(self):
-        return '{}'.format(self.name)
+        return "{}".format(self.name)
 
 
 class Article(models.Model):
@@ -28,40 +28,29 @@ class Article(models.Model):
     content = RichTextUploadingField(max_length=10000, blank=False, null=True)
     created = models.DateField(auto_created=True, blank=False, null=True)
     updated = models.DateField(auto_now=True, blank=False, null=True)
-    ENG_LANG = 'eng'
-    SPA_LANG = 'esp'
-    LANGUAGE_CHOICES = [
-        (ENG_LANG, 'english'),
-        (SPA_LANG, 'español')
-    ]
+    ENG_LANG = "eng"
+    SPA_LANG = "esp"
+    LANGUAGE_CHOICES = [(ENG_LANG, "english"), (SPA_LANG, "español")]
     language = models.CharField(
-        max_length=3,
-        choices=LANGUAGE_CHOICES,
-        default=SPA_LANG
+        max_length=3, choices=LANGUAGE_CHOICES, default=SPA_LANG
     )
     main_image = models.ForeignKey(
-        Image,
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True
+        Image, on_delete=models.CASCADE, null=True, blank=True
     )
-    TECH_ART = 't'
-    HOBBY_ART = 'h'
-    BOOK_ART = 'b'
-    MOVIE_ART = 'm'
-    MY_PROFILE = 'p'
+    TECH_ART = "t"
+    HOBBY_ART = "h"
+    BOOK_ART = "b"
+    MOVIE_ART = "m"
+    MY_PROFILE = "p"
     ARTICLE_TYPE_CHOICES = [
-        (TECH_ART, 'Technology'),
-        (HOBBY_ART, 'Hobby'),
-        (BOOK_ART, 'Book'),
-        (MOVIE_ART, 'Movie'),
-        (MY_PROFILE, 'Profile')
+        (TECH_ART, "Technology"),
+        (HOBBY_ART, "Hobby"),
+        (BOOK_ART, "Book"),
+        (MOVIE_ART, "Movie"),
+        (MY_PROFILE, "Profile"),
     ]
     article_type = models.CharField(
-        max_length=1,
-        choices=ARTICLE_TYPE_CHOICES,
-        null=True,
-        blank=True
+        max_length=1, choices=ARTICLE_TYPE_CHOICES, null=True, blank=True
     )
 
     def __str__(self):
@@ -69,24 +58,13 @@ class Article(models.Model):
 
 
 class Message(models.Model):
-    name = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
+    name = models.CharField(max_length=100, null=True, blank=True)
     email = models.EmailField()
     message = models.TextField()
-    created = models.DateField(
-        auto_now_add=True,
-        blank=False,
-        null=False
-    )
+    created = models.DateField(auto_now_add=True, blank=False, null=False)
 
     def __str__(self):
-        return (
-            "{self.email}  -> {self.message} \n"
-            "{self.created}"
-        ).format(self=self)
+        return ("{self.email}  -> {self.message} \n" "{self.created}").format(self=self)
 
 
 class Frace(models.Model):
@@ -106,18 +84,11 @@ class ContactCard(models.Model):
     skype = models.CharField(max_length=100, null=True, blank=True)
     twitter = models.CharField(max_length=100, null=True, blank=True)
     linkedin = models.CharField(max_length=70, null=True, blank=True)
-    image = models.ForeignKey(
-        Image,
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE
-    )
+    image = models.ForeignKey(Image, null=True, blank=True, on_delete=models.CASCADE)
     updated = models.DateField(auto_now=True, blank=False, null=True)
 
     def __str__(self):
-        return (
-            "{self.name} : {self.title}"
-        ).format(self=self)
+        return ("{self.name} : {self.title}").format(self=self)
 
 
 class JobExperience(models.Model):
@@ -128,17 +99,12 @@ class JobExperience(models.Model):
     roll_description = models.TextField()
     technologies = models.ManyToManyField(Technology)
 
-    image = models.ForeignKey(
-        Image,
-        blank=True,
-        null=True,
-        on_delete=models.CASCADE
-    )
+    image = models.ForeignKey(Image, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return (
-                    " {self.company_name} : "
-                    "{self.job_title} : "
-                    "{self.start_date} -> "
-                    "{self.termination_date} "
+            " {self.company_name} : "
+            "{self.job_title} : "
+            "{self.start_date} -> "
+            "{self.termination_date} "
         ).format(self=self)

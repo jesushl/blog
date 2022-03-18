@@ -7,31 +7,54 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0013_auto_20201010_1551'),
+        ("blog", "0013_auto_20201010_1551"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Image',
+            name="Image",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='gallery/static/images/no-img.jpg', upload_to='gallery')),
-                ('name', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default="gallery/static/images/no-img.jpg", upload_to="gallery"
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
             ],
         ),
         migrations.AlterField(
-            model_name='jobexperience',
-            name='termination_date',
+            model_name="jobexperience",
+            name="termination_date",
             field=models.DateField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='article',
-            name='main_image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.image'),
+            model_name="article",
+            name="main_image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="blog.image",
+            ),
         ),
         migrations.AddField(
-            model_name='jobexperience',
-            name='image',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.image'),
+            model_name="jobexperience",
+            name="image",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="blog.image",
+            ),
         ),
     ]

@@ -7,29 +7,42 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0005_article_language'),
+        ("blog", "0005_article_language"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Frace',
+            name="Frace",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('frase', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("frase", models.CharField(max_length=200)),
             ],
         ),
         migrations.AddField(
-            model_name='techarticle',
-            name='technology',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.technology'),
+            model_name="techarticle",
+            name="technology",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="blog.technology",
+            ),
         ),
         migrations.RemoveField(
-            model_name='hobby',
-            name='article',
+            model_name="hobby",
+            name="article",
         ),
         migrations.AddField(
-            model_name='hobby',
-            name='article',
-            field=models.ManyToManyField(blank=True, to='blog.Article'),
+            model_name="hobby",
+            name="article",
+            field=models.ManyToManyField(blank=True, to="blog.Article"),
         ),
     ]

@@ -6,41 +6,51 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0015_contactcard_image'),
+        ("blog", "0015_contactcard_image"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='hobby',
-            name='article',
+            model_name="hobby",
+            name="article",
         ),
         migrations.RemoveField(
-            model_name='movierecomendation',
-            name='article',
+            model_name="movierecomendation",
+            name="article",
         ),
         migrations.RemoveField(
-            model_name='techarticle',
-            name='article',
+            model_name="techarticle",
+            name="article",
         ),
         migrations.RemoveField(
-            model_name='techarticle',
-            name='technology',
+            model_name="techarticle",
+            name="technology",
         ),
         migrations.AddField(
-            model_name='article',
-            name='article_type',
-            field=models.CharField(blank=True, choices=[('t', 'Technology'), ('h', 'Hobby'), ('b', 'Book'), ('m', 'Movie')], max_length=1, null=True),
+            model_name="article",
+            name="article_type",
+            field=models.CharField(
+                blank=True,
+                choices=[
+                    ("t", "Technology"),
+                    ("h", "Hobby"),
+                    ("b", "Book"),
+                    ("m", "Movie"),
+                ],
+                max_length=1,
+                null=True,
+            ),
         ),
         migrations.DeleteModel(
-            name='BookRecomendation',
+            name="BookRecomendation",
         ),
         migrations.DeleteModel(
-            name='Hobby',
+            name="Hobby",
         ),
         migrations.DeleteModel(
-            name='MovieRecomendation',
+            name="MovieRecomendation",
         ),
         migrations.DeleteModel(
-            name='TechArticle',
+            name="TechArticle",
         ),
     ]

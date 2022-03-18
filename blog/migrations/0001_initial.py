@@ -8,46 +8,85 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateField(auto_created=True)),
-                ('title', models.CharField(max_length=100)),
-                ('abstract', models.CharField(max_length=128)),
-                ('content', models.TextField(max_length=10000)),
-                ('updated', models.DateField(auto_now=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("created", models.DateField(auto_created=True)),
+                ("title", models.CharField(max_length=100)),
+                ("abstract", models.CharField(max_length=128)),
+                ("content", models.TextField(max_length=10000)),
+                ("updated", models.DateField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='JobExperience',
+            name="JobExperience",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('company_name', models.CharField(max_length=50)),
-                ('job_title', models.CharField(max_length=100)),
-                ('start_date', models.DateField()),
-                ('termination_date', models.DateField()),
-                ('roll_description', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("company_name", models.CharField(max_length=50)),
+                ("job_title", models.CharField(max_length=100)),
+                ("start_date", models.DateField()),
+                ("termination_date", models.DateField()),
+                ("roll_description", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Technologies',
+            name="Technologies",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('level', models.IntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("level", models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Hobbies',
+            name="Hobbies",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('article', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.article')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200)),
+                (
+                    "article",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="blog.article",
+                    ),
+                ),
             ],
         ),
     ]

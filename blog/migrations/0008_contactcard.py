@@ -6,23 +6,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0007_auto_20201010_0522'),
+        ("blog", "0007_auto_20201010_0522"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ContactCard',
+            name="ContactCard",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20)),
-                ('title', models.CharField(max_length=40)),
-                ('nickname', models.CharField(max_length=9)),
-                ('email', models.EmailField(max_length=254)),
-                ('phone_number', models.CharField(max_length=20)),
-                ('adress', models.CharField(max_length=100)),
-                ('skype', models.CharField(max_length=20)),
-                ('twitter', models.CharField(max_length=10)),
-                ('linkedin', models.CharField(max_length=70)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20)),
+                ("title", models.CharField(max_length=40)),
+                ("nickname", models.CharField(max_length=9)),
+                ("email", models.EmailField(max_length=254)),
+                ("phone_number", models.CharField(max_length=20)),
+                ("adress", models.CharField(max_length=100)),
+                ("skype", models.CharField(max_length=20)),
+                ("twitter", models.CharField(max_length=10)),
+                ("linkedin", models.CharField(max_length=70)),
             ],
         ),
     ]

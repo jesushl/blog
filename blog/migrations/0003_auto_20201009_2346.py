@@ -7,37 +7,69 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0002_auto_20201009_2337'),
+        ("blog", "0002_auto_20201009_2337"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Hobbies',
-            new_name='Hobby',
+            old_name="Hobbies",
+            new_name="Hobby",
         ),
         migrations.RenameModel(
-            old_name='Technologies',
-            new_name='Technology',
+            old_name="Technologies",
+            new_name="Technology",
         ),
         migrations.AddField(
-            model_name='jobexperience',
-            name='technologies',
-            field=models.ManyToManyField(to='blog.Technology'),
+            model_name="jobexperience",
+            name="technologies",
+            field=models.ManyToManyField(to="blog.Technology"),
         ),
         migrations.CreateModel(
-            name='TechArticle',
+            name="TechArticle",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('article', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.article')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                (
+                    "article",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="blog.article",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='MovieRecomendation',
+            name="MovieRecomendation",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('article', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.article')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                (
+                    "article",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="blog.article",
+                    ),
+                ),
             ],
         ),
     ]
