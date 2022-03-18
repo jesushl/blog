@@ -35,8 +35,9 @@ toml==0.10.2
 urllib3==1.25.8
 webencodings==0.5.1
 wrapt==1.12.1
-gunicorn
-django-heroku
-psycopg2-binary
-dj-database-url
-whitenoise
+gunicorn==20.0.4
+django-heroku==0.3.1
+psycopg2-binary==2.8.6
+dj-database-url==0.5.0
+whitenoise==0.49.0
+django-allauth==0.49.0
