@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def auth():
+    pass
+
+
+def login_google():
+    pass
